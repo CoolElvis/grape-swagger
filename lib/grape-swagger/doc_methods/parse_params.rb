@@ -25,6 +25,7 @@ module GrapeSwagger
           document_default_value(settings)
           document_range_values(settings)
           document_required(settings)
+          document_example(settings)
 
           @parsed_param
         end
@@ -111,6 +112,10 @@ module GrapeSwagger
 
         def parse_range_values(values)
           { minimum: values.first, maximum: values.last }
+        end
+
+        def document_example(settings)
+          @parsed_param[:example] = settings[:example] if settings[:example].present?
         end
       end
     end
